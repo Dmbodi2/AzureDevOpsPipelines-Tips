@@ -5,7 +5,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  subscription: 4ae12a82-6060-439a-9e73-6d853248c54a
+  subscription: 095a140e-9a35-4fed-b781-8648ede01207
   resourceGroup: test
   storageAccount: teststorage
   container: tfstate
