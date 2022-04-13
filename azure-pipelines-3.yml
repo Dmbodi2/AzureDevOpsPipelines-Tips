@@ -1,0 +1,33 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'Pay-As-You-Go(1)(15db3464-50a0-4944-a39d-b9a693ef3823)'
+    backendAzureRmResourceGroupName: 'NetworkWatcherRG'
+    backendAzureRmStorageAccountName: 'omala2'
+    backendAzureRmContainerName: 'tfstate'
+
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'Pay-As-You-Go(1)(15db3464-50a0-4944-a39d-b9a693ef3823)'
+
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    environmentServiceNameAzureRM: 'Pay-As-You-Go(1)(15db3464-50a0-4944-a39d-b9a693ef3823)'
