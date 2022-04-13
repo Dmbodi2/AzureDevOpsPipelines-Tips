@@ -21,10 +21,12 @@ steps:
     backendAzureRmContainerName: 'tfstate'
     backendAzureRmKey: 'asdfghjkl'
 
+
 - task: TerraformTaskV2@2
   inputs:
     provider: 'azurerm'
     command: 'plan'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
     environmentServiceNameAzureRM: 'Pay-As-You-Go(1)(15db3464-50a0-4944-a39d-b9a693ef3823)'
 
 - task: TerraformTaskV2@2
