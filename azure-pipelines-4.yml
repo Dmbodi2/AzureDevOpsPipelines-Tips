@@ -32,6 +32,6 @@ steps:
 - task: TerraformTaskV2@2
   inputs:
     provider: 'azurerm'
-    command: 'plan'
+    command: 'apply'
     workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
     environmentServiceNameAzureRM: 'Pay-As-You-Go(1)(15db3464-50a0-4944-a39d-b9a693ef3823)'
