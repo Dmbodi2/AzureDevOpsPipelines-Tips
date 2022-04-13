@@ -19,6 +19,7 @@ steps:
     backendAzureRmResourceGroupName: 'NetworkWatcherRG'
     backendAzureRmStorageAccountName: 'omala2'
     backendAzureRmContainerName: 'tfstate'
+    backendAzureRmKey: 'asdfghjkl'
 
 - task: TerraformTaskV2@2
   inputs:
