@@ -7,7 +7,7 @@ pool:
 variables:
   subscription: 095a140e-9a35-4fed-b781-8648ede01207
   resourceGroup: test
-  storageAccount: teststorage
+  storageAccount: omala
   container: tfstate
   tfstateFile: terraform.tfstate
   anyTfChanges: false
@@ -18,6 +18,18 @@ steps:
   displayName: install Terraform v0.12.28
   inputs:
     terraformVersion: '0.12.28'
+
+- task: TerraformTaskV1@0
+  displayName: terraform init
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/skip-step'
+    backendServiceArm: '$(subscription)'
+    backendAzureRmResourceGroupName: '$(resourceGroup)'
+    backendAzureRmStorageAccountName: '$(storageAccount)'
+    backendAzureRmContainerName: '$(container)'
+    backendAzureRmKey: '$(tfstateFile)'
 
 - task: TerraformTaskV1@0
   displayName: terraform plan -out=tfplan
