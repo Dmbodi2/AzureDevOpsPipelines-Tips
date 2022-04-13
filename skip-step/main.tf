@@ -81,7 +81,7 @@ resource "azurerm_subnet" "pri_6" {
 
 # Create our Azure Storage Account
 resource "azurerm_storage_account" "test" {
-  name                     = "Demo"
+  name                     = "vansam"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
